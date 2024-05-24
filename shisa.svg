@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 顔の外形 -->
+  <path d="M50 50 Q40 70 60 90 Q50 100 70 120  Q120 130 130 120 Q150 100 140 90 Q160 70 150 50" fill="black" />
+
+  <!-- 目 -->
+  <circle cx="70" cy="80" r="10" fill="white" />
+  <circle cx="70" cy="80" r="5" fill="black" />
+  <circle cx="130" cy="80" r="10" fill="white" />
+  <circle cx="130" cy="80" r="5" fill="black" />
+
+  <!-- 鼻 -->
+  <path d="M90 90 Q100 110 110 90" fill="none" stroke="white" stroke-width="5" />
+
+  <!-- 口 -->
+  <!-- <path d="M70 120 Q100 150 130 120 Q100 140 70 120 Z" fill="black" stroke="white" stroke-width="5" /> -->
+
+  <!-- 角の模様 -->
+  <path d="M60 60 Q55 50 50 60" fill="none" stroke="white" stroke-width="3" />
+  <path d="M140 60 Q145 50 150 60" fill="none" stroke="white" stroke-width="3" />
+
+  <!-- 顔の模様 -->
+  <path d="M70 90 Q60 100 70 110" fill="none" stroke="white" stroke-width="3" />
+  <path d="M130 90 Q140 100 130 110" fill="none" stroke="white" stroke-width="3" />
+
+</svg>
