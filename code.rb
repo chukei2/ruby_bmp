@@ -158,61 +158,6 @@ def inverted_triangle(scale_factor)
   triangles
 end
 
-
-
-def flower
-  tris = []
-  fy=->x{(0.8+0.2*x)*((1-(2*x-1)**2)/4)**0.7}
-  fz=->x{2-1/(32*x*x+0.5)+x+(1-x*x)**0.5-1}
-  6.times do |i|
-    rot=(0.5+(3**0.5/2).i)**i
-    12.times{|j|
-      k=i%2
-      x1=j/12.0
-      x2=(j+1)/12.0
-      z1=fz[x1]-k*0.2*x1
-      z2=fz[x2]-k*0.2*x2
-      c1=[0.4+0.7*j/12*(1-k*0.4),1].min
-      c2=[0.4+0.7*(j+1)/12*(1-k*0.4),1].min
-      a=(x1+fy[x1].i*(1-k*0.1))*rot
-      b=(x1-fy[x1].i*(1-k*0.1))*rot
-      c=(x2+fy[x2].i*(1-k*0.1))*rot
-      d=(x2-fy[x2].i*(1-k*0.1))*rot
-      a=[*a.rect,z1,c1]
-      b=[*b.rect,z1,c1]
-      c=[*c.rect,z2,c2]
-      d=[*d.rect,z2,c2]
-      tris<<[a,b,c].map(&:dup) if a!=b
-      tris<<[b,c,d].map(&:dup) if c!=d
-    }
-  end
-  tris.each{|t|t.each{|p|p[0]*=0.2;p[1]*=0.2;p[2]*=0.2;p[2]+=1}}
-  balls=5.times.map{[0.06*rand-0.03,0.06*rand-0.03,1.36,0.008, 0]}
-  balls<<[-0.02,0,1.38,0.012,1]
-  8.times{|i|
-    z1=i/8.0
-    z2=(i+1)/8.0
-    s=0.02
-    c=0.3
-    lc=0.3+0.2*i/8
-    tris<<[[-s,0,z1,c],[s,0,z1,c],[s,0,z2,c]]
-    tris<<[[-s,0,z1,c],[s,0,z2,c],[-s,0,z2,c]]
-    tris<<[[0,-s,z1,c],[0,s,z1,c],[0,s,z2,c]]
-    tris<<[[0,-s,z1,c],[0,s,z2,c],[0,-s,z2,c]]
-    r=2**(3*i).i
-    l2=(r/3).rect
-    l1=((0.4+0.2i)*r/3).rect
-    l3=((0.4-0.2i)*r/3).rect
-    lz1=z1+0.125
-    tris<<[[0,0,z1,lc],[*l1,lz1,lc],[*l3,lz1,lc]]
-    tris<<[[*l1,lz1,lc],[*l3,lz1,lc],[*l2,z1+0.25,lc]]
-  }
-  [tris,balls]
-end
-
-
-fl,flb=flower
-
 renderfont=->c,t0{
   c.camera(0,0,0,Math::PI/2,-Math::PI/2)
   %w[CHURADATA RUBY].each_with_index{|s,yi|
@@ -252,7 +197,7 @@ loop {
   # 逆三角形のスケーリングファクターを計算
   scale_factor = 1
   if t < 3
-    scale_factor = 10 - t * 5  # 初めの3秒間でスケールを5から1に縮小
+    scale_factor = 10 - t * 4  # 初めの3秒間でスケールを5から1に縮小
   elsif t >= 2
     scale_factor = 0
   end
