@@ -141,7 +141,7 @@ end
 def inverted_triangle(scale_factor)
   base_size = 0.1 * scale_factor  # スケールファクターを適用
   height = 0.2 * scale_factor  # スケールファクターを適用
-  y_offset = 0.7  # 逆三角形の位置を上に移動するオフセット
+  y_offset = 0.9  # 逆三角形の位置を上に移動するオフセット
   
   # 頂点の定義 (ベースの2つの頂点と下部の頂点)
   vertices = [
@@ -196,9 +196,9 @@ loop {
 
   # 逆三角形のスケーリングファクターを計算
   scale_factor = 1
-  if t < 3
-    scale_factor = 10 - t * 4  # 初めの3秒間でスケールを5から1に縮小
-  elsif t >= 2
+  if t < 2
+    scale_factor = 12 - t * 6  # 初めの3秒間でスケールを5から1に縮小
+  elsif t >= 1
     scale_factor = 0
   end
 
